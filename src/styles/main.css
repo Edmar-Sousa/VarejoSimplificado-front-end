@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Sen:wght@400..800&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root,
+html {
+    --white: #fff;
+
+    --gray-100: #A0A5BA;
+    --gray-500: #eeeeee;
+    
+    --light-blue-100: #F0F5FA;
+
+    --orange-500: #FF7622;
+    --orange-550: #d8651e;
+
+    --primary-font: Sen, Arial, Helvetica, sans-serif;
+
+    font-size: 16px;
+}
