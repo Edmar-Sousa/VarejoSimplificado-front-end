@@ -45,3 +45,15 @@
     background: none;
     cursor: pointer;
 }
+
+.inputContainer.inputError .fieldContainer {
+    box-shadow: 0 0 6px var(--red-500);
+}
+
+.inputContainer.inputError .errorMessage {
+    font-size: 0.9rem;
+    display: block;
+    margin-top: 5px;
+
+    color: var(--red-500);
+}

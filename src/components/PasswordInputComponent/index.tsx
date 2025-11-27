@@ -4,9 +4,12 @@ import { useCallback, useState } from "react";
 
 
 interface PasswordInputComponentProps {
-    id: string
-    label: string
-    placeholder?: string
+    id: string;
+    label: string;
+    register: any;
+    isError?: boolean;
+    errorMessage?: string;
+    placeholder?: string;
 }
 
 
