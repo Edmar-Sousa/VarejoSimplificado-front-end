@@ -41,7 +41,7 @@ export const LoginPage = () => {
 
     const onSubmit = useCallback(async (data: LoginFormType) => {
         setIsLoadding(() => true);
-        const response = await loginUser(data.email, data.password);
+        await loginUser(data.email, data.password);
         setIsLoadding(() => false);
     }, []);
 
