@@ -36,6 +36,7 @@
 .form {
     width: 100%;
     max-width: 450px;
+    padding: 0 10px;
 }
 
 .buttonLogin {

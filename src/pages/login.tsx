@@ -1,4 +1,5 @@
 import * as yup from 'yup';
+import { useCallback, useState } from 'react';
 
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
@@ -7,11 +8,11 @@ import { useForm } from 'react-hook-form';
 import { TextInputComponent } from '../components/TextInputComponent';
 import { PasswordInputComponent } from '../components/PasswordInputComponent';
 import { ButtonComponent } from '../components/ButtonComponent';
+import { loginUser } from '../services/auth';
 
 
 import styles from '../styles/login.module.css'
 import LoginImageSVG from '../assets/login-image.svg'
-import { useCallback } from 'react';
 
 
 const loginFormScheme = yup.object({
@@ -24,16 +25,24 @@ const loginFormScheme = yup.object({
         .required('A senha é obrigatória'),
 });
 
+interface LoginFormType {
+    email: string;
+    password: string;
+}
 
 export const LoginPage = () => {
+    const [isLoadding, setIsLoadding] = useState(false);
+
 
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(loginFormScheme)
     });
 
 
-    const onSubmit = useCallback((data: any) => {
-        console.log(data);
+    const onSubmit = useCallback(async (data: LoginFormType) => {
+        setIsLoadding(() => true);
+        const response = await loginUser(data.email, data.password);
+        setIsLoadding(() => false);
     }, []);
 
 
@@ -73,12 +82,13 @@ export const LoginPage = () => {
                         label='Senha'
                         register={register('password')}
                         isError={!!errors.password}
-                        errorMessage={errors.email?.message} />
+                        errorMessage={errors.password?.message} />
 
                     <ButtonComponent 
                         text='Entrar' 
                         type='submit'
-                        className={styles.buttonLogin} />
+                        className={styles.buttonLogin}
+                        isLoadding={isLoadding} />
                 </form>
             </div>
         </div>
