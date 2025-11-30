@@ -8,24 +8,25 @@ import {
 
 import { SideMenuComponent } from './components/SideMenuComponent';
 import styles from "./styles.module.css";
+import { Outlet } from 'react-router-dom';
 
 
 
 const menuItems = [
     { 
-        path: '/dashboard',
+        path: '/dashboard/',
         label: 'Dashboard',
         icon: Home,
         ariaLabel: 'Ir para Dashboard'
     },
     { 
-        path: '/users', 
+        path: '/dashboard/users', 
         label: 'Usuarios', 
         icon: User, 
         ariaLabel: 'Ir para Pagina de Usuarios' 
     },
     { 
-        path: '/products', 
+        path: '/dashboard/products', 
         label: 'Produtos', 
         icon: Package, 
         ariaLabel: 'Ir para Pagina de Usuarios'
@@ -68,7 +69,7 @@ export const DashboardPage = () => {
                 </div>
 
                 <div className={styles.mainContent}>
-                    <p>Content</p>
+                    <Outlet />
                 </div>
             </main>
         </div>

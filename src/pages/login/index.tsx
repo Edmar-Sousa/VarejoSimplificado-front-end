@@ -13,7 +13,7 @@ import { loginUser } from '../../services/auth';
 
 
 import styles from './styles.module.css'
-import LoginImageSVG from '../assets/login-image.svg'
+import LoginImageSVG from '../../assets/login-image.svg'
 
 
 const loginFormScheme = yup.object({

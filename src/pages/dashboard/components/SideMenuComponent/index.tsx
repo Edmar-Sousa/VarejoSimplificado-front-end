@@ -27,7 +27,7 @@ const MenuItemComponent = (props: MenuItem) => {
 
     return (
         <li>
-            <NavLink to={path} className={styles.menuLink}>
+            <NavLink to={path} className={styles.menuLink} end>
                 {({isActive}) => (
                     <button className={`${ styles.itemMenu } ${ isActive ? styles.active : '' }`} aria-label={ariaLabel}>
                         { Icon && <Icon /> }
