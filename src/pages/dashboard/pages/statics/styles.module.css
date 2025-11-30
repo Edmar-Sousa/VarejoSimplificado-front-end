@@ -1,0 +1,88 @@
+.staticsContainer {
+    width: 100%;
+}
+
+.chartTitle {
+    font-family: var(--primary-font);
+    font-size: 1.2rem;
+
+    margin-bottom: 30px;
+    color: var(--gray-600);
+}
+
+.barchartContainer {
+    width: 100%;
+    flex: 1;
+
+    padding: 15px;
+    border-radius: 15px;
+
+    background: var(--white);
+}
+
+.cards {
+    flex: 1;
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 20px;
+}
+
+.cardContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+
+    border-radius: 15px;
+    padding: 15px;
+    background: var(--white);
+}
+
+.cardValue,
+.cardLegend {
+    font-weight: bold;
+    font-family: var(--primary-font);
+}
+
+.cardValue {
+    font-size: clamp(1.5rem, 1vw, 2.5rem);
+    margin-bottom: 10px;
+    color: var(--gray-600);
+}
+
+.cardLegend {
+    font-size: clamp(1.1rem, 1vw, 1.9rem);
+    color: var(--gray-550);
+}
+
+.notificationSection {
+    width: 100%;
+    padding: 20px 15px;
+
+    margin-top: 40px;
+    border-radius: 15px;
+
+    background: var(--white);
+}
+
+
+@media (min-width: 425px) {
+    .cards {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (min-width: 1024px) {
+
+    .barchartContainer {
+        max-width: 50%;
+    }
+
+    .cardContainer {
+        padding: 20px;
+    }
+
+    .cards {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+}

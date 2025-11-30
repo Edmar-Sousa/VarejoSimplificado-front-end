@@ -13,7 +13,9 @@ html {
     --black-opacity: rgba(0, 0, 0, 0.342);
 
     --gray-100: #A0A5BA;
-    --gray-500: #eeeeee;
+    --gray-500: #F7F8F9;
+    --gray-550: #838799;
+    --gray-600: #32343E;
     
     --light-blue-100: #F0F5FA;
 

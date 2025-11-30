@@ -1,4 +1,6 @@
 import { useCallback, useState } from 'react';
+import { Outlet } from 'react-router-dom';
+
 import { 
     Menu,
     User,
@@ -8,7 +10,6 @@ import {
 
 import { SideMenuComponent } from './components/SideMenuComponent';
 import styles from "./styles.module.css";
-import { Outlet } from 'react-router-dom';
 
 
 
