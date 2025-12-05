@@ -2,8 +2,8 @@
 # Varejo Simplificado
 
 # ToDo
-- [] Login
-- [] Dashboard
-- [] Produtos
-- [] Detalhes - Produtos
+- [x] Login
+- [x] Dashboard
+- [ ] Produtos
+- [ ] Detalhes - Produtos
 
