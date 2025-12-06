@@ -6,6 +6,8 @@ import { DashboardPage } from "./pages/dashboard";
 import { StaticsPage } from "./pages/dashboard/pages/statics";
 import { ProductsPage } from "./pages/dashboard/pages/products";
 import { UsersPage } from "./pages/dashboard/pages/users";
+import { ProductDetailsPage } from "./pages/dashboard/pages/products/details";
+
 
 export const router = createBrowserRouter([
     {
@@ -24,6 +26,7 @@ export const router = createBrowserRouter([
             { path: '', element: <StaticsPage />  },
             { path: 'users', element: <UsersPage />  },
             { path: 'products', element: <ProductsPage />  },
+            { path: 'products/:id', element: <ProductDetailsPage />  },
         ]
     }
 ]);

@@ -1,0 +1,190 @@
+/* ===========================
+   CONTAINER GERAL
+=========================== */
+
+.container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: bold;
+  word-wrap: break-word;
+}
+
+/* ===========================
+   ABAS
+=========================== */
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 5px;
+}
+
+.tabs button {
+  background: none;
+  border: none;
+  padding: 10px 14px;
+  cursor: pointer;
+  font-size: 15px;
+  color: #666;
+  border-radius: 6px 6px 0 0;
+  transition: 0.2s;
+}
+
+.tabs button:hover {
+  background: #f0f0f0;
+}
+
+.activeTab {
+  background: #fff !important;
+  color: #000;
+  border: 2px solid #ccc;
+  border-bottom: none;
+  font-weight: bold;
+}
+
+/* ===========================
+   BOX DO CONTEÚDO
+=========================== */
+
+.contentBox {
+  padding: 20px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  background: #fff;
+}
+
+/* ===========================
+   ABA PRINCIPAL
+=========================== */
+
+.principalContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Agrupamento que vira 2 colunas no desktop */
+.infoGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 768px) {
+  .infoGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.infoGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.infoGroup label {
+  font-size: 14px;
+  color: #555;
+  font-weight: 500;
+}
+
+.infoGroup span {
+  font-size: 16px;
+  font-weight: bold;
+  word-break: break-word;
+}
+
+/* ===========================
+   SELECT DA SEÇÃO
+=========================== */
+
+.select {
+  width: 100%;
+  max-width: 260px;
+  padding: 10px;
+  border: 2px solid #bbb;
+  border-radius: 8px;
+  font-size: 15px;
+  background: #fff;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.select:hover {
+  border-color: #888;
+}
+
+.select:focus {
+  border-color: #000;
+  outline: none;
+}
+
+/* ===========================
+   ÁREA DE IMAGEM
+=========================== */
+
+.imageArea {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.imageBox {
+  width: 100%;
+  max-width: 200px;
+  height: 200px;
+  border: 2px dashed #bbb;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #555;
+  font-size: 14px;
+  background: #fafafa;
+  transition: 0.3s;
+}
+
+.imageBox:hover {
+  border-color: #777;
+  background: #f3f3f3;
+}
+
+/* ===========================
+   LAYOUT IMAGEM + INFORMAÇÕES
+=========================== */
+
+/* No mobile: tudo coluna */
+/* No desktop: imagem ao lado */
+.detailsLayout {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+@media (min-width: 768px) {
+  .detailsLayout {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+/* ===========================
+   PLACEHOLDER PARA ABAS FUTURAS
+=========================== */
+
+.placeholder {
+  text-align: center;
+  padding: 40px;
+  font-size: 16px;
+  color: #777;
+  font-style: italic;
+}
