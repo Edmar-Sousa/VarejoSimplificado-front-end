@@ -12,6 +12,7 @@ import { SideMenuComponent } from './components/SideMenuComponent';
 import { getProductCategories } from '../../services/products';
 
 import styles from "./styles.module.css";
+import { useAuthStore } from '../../states/auth';
 
 
 
@@ -21,6 +22,12 @@ const menuItems = [
         label: 'Dashboard',
         icon: Home,
         ariaLabel: 'Ir para Dashboard'
+    },
+    { 
+        path: '/categories/',
+        label: 'Categorias',
+        icon: Home,
+        ariaLabel: 'Ir para Categorias'
     },
     { 
         path: '/dashboard/users', 
@@ -40,6 +47,10 @@ const menuItems = [
 
 export const DashboardPage = () => {
     const [isShowMenu, setIsShowMenu] = useState(false);
+
+    const isAdminUser = useAuthStore((state) => state.isAdminUser());
+
+    console.log('isAdminUser', isAdminUser);
 
     const handlerShowMenu = useCallback(() => {
         setIsShowMenu(() => true);

@@ -34,8 +34,6 @@ interface LoginFormType {
 
 export const LoginPage = () => {
     const navigate = useNavigate();
-
-    const setAuthenticated = useAuthStore((state) => state.setAuthenticated) 
     const setAccessToken = useAuthStore((state) => state.setAccessToken);
 
     
@@ -49,9 +47,9 @@ export const LoginPage = () => {
 
     const onSubmit = useCallback(async (data: LoginFormType) => {
         try {
+            setIsLoadding(true);
             const response = await loginUser(data.email, data.password);
 
-            setAuthenticated(true);
             setAccessToken(response.access_token);
             setIsLoadding(false);
 

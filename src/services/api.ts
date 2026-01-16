@@ -13,7 +13,7 @@ api.interceptors.request.use((config) => {
         config.headers = config.headers || {};
 
         Object.assign(config.headers as any, {
-            'Authorization': `Bearer ${accessToken}`,
+            'Authorization': `${accessToken}`,
             'Accept': 'application/json',
             'Content-Type': 'application/json',
         });

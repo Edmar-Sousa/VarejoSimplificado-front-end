@@ -36,12 +36,16 @@
 }
 
 .spinnerLoadding {
+    display: block;
+
     width: 24px;
     height: 24px;
-
+    
     border-radius: 12px;
     border: 5px solid var(--white);
     border-bottom-color: var(--gray-100);
+    
+    animation: spinAnim 1s linear infinite;
 }
 
 @keyframes spinAnim {

@@ -10,11 +10,12 @@ import { ProductDetailsPage } from "./pages/dashboard/pages/products/details";
 
 
 import { useAuthStore } from './states/auth';
+import { validateToken } from './utils/token'
 
 const moddlewareAuth = () => {
-    const { isAuthenticated } = useAuthStore.getState();
+    const accessToken = useAuthStore.getState().accessToken;
 
-    if (!isAuthenticated)
+    if (!validateToken(accessToken))
         return redirect('/login');
 
     return null;
@@ -39,6 +40,7 @@ export const router = createBrowserRouter([
             { path: '', element: <StaticsPage />  },
             { path: 'users', element: <UsersPage />  },
             { path: 'products', element: <ProductsPage />  },
+            { path: 'categories', element: <div>Categories Page</div> },
             { path: 'products/:id', element: <ProductDetailsPage />  },
         ]
     }
