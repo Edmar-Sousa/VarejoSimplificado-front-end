@@ -7,13 +7,13 @@ const api = axios.create({
 })
 
 api.interceptors.request.use((config) => {
-    const { isAuthenticated, accessToken } = useAuthStore.getState();
+    const { accessToken } = useAuthStore.getState();
 
-    if (isAuthenticated && accessToken) {
+    if (accessToken) {
         config.headers = config.headers || {};
 
         Object.assign(config.headers as any, {
-            'Authorization': `${accessToken}`,
+            'Authorization': `Bearer ${accessToken}`,
             'Accept': 'application/json',
             'Content-Type': 'application/json',
         });
