@@ -104,3 +104,28 @@
         display: block;
     }
 }
+
+
+/* Add categorie */
+.title {
+    margin: 40px 0;
+}
+
+.addCategoryForm {
+    width: 100%;
+}
+
+.formFieldset {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 20px;
+
+    border: none;
+}
+
+@media (min-width: 768px) {
+    .formFieldset {
+        flex-direction: row;
+    }
+}

@@ -1,9 +1,11 @@
 import * as yup from 'yup';
 import { useCallback, useState } from 'react';
+import axios from 'axios'
 
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 import { useAuthStore } from '../../states/auth';
 
@@ -46,20 +48,27 @@ export const LoginPage = () => {
 
 
     const onSubmit = useCallback(async (data: LoginFormType) => {
+        setIsLoadding(true);
+        
         try {
-            setIsLoadding(true);
             const response = await loginUser(data.email, data.password);
-
             setAccessToken(response.access_token);
-            setIsLoadding(false);
 
+            toast.success('Login realizado com sucesso!');
             navigate('/dashboard');
         } 
 
         catch (error) {
-            console.error('Erro ao fazer login:', error);
+
+            const message = axios.isAxiosError(error) 
+                ? toast.error(error.response?.data.detail) 
+                : 'Erro ao realizar login. Tente novamente mais tarde.';
+
+            toast.error(message);
+        }
+
+        finally {
             setIsLoadding(false);
-            return;
         }
     }, []);
 

@@ -13,6 +13,11 @@ export async function getProductCategories(): Promise<Array<ProductCategoryType>
     return response.data;
 }
 
+export async function addProductCategory(data: { name: string; description: string }) {
+    const response = await api.post('/products/categories', data);
+    return response.data;
+}
+
 export async function deleteProductCategory(id: number) {
     const response = await api.delete(`/products/categories/${id}`);
     return response.data;

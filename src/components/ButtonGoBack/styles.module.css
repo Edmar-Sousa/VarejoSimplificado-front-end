@@ -1,0 +1,20 @@
+
+.button {
+    cursor: pointer;
+    
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    
+    font-size: 1rem;
+    color: var(--orange-500);
+
+    border: none;
+    background: none;
+}
+
+.text {
+    font-size: 1rem;
+    font-family: var(--primary-font);
+    color: var(--orange-500);
+}
