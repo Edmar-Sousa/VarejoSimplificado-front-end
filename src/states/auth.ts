@@ -4,7 +4,8 @@ import { create } from 'zustand'
 import UserRole from '../enums/user.enum';
 import { 
     getTokenSessionStorage, 
-    setTokenSessionStorage, 
+    setTokenSessionStorage,
+    removeTokenSessionStorage, 
     decodeJwtToken,
 
     type DecodedTokenType 
@@ -16,6 +17,7 @@ interface AuthStateType {
 
     setAccessToken: (token: string) => void;
     isAdminUser: () => boolean;
+    logoutUser: () => void;
 }
 
 
@@ -36,6 +38,15 @@ export const useAuthStore = create<AuthStateType>((set, get) => ({
         set({ 
             accessToken: token,
             decodedToken: decoded
+        });
+    },
+
+    logoutUser: () => {
+        removeTokenSessionStorage();
+        
+        set({
+            accessToken: '',
+            decodedToken: {} as DecodedTokenType,
         });
     },
 }))

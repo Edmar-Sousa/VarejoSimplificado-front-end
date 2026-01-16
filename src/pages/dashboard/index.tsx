@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 
 import { 
     Menu,
@@ -9,7 +9,6 @@ import {
 } from 'lucide-react'
 
 import { SideMenuComponent } from './components/SideMenuComponent';
-import { getProductCategories } from '../../services/products';
 
 import styles from "./styles.module.css";
 import { useAuthStore } from '../../states/auth';
@@ -21,36 +20,41 @@ const menuItems = [
         path: '/dashboard/',
         label: 'Dashboard',
         icon: Home,
-        ariaLabel: 'Ir para Dashboard'
+        ariaLabel: 'Ir para Dashboard',
+        isAdminOnly: false
     },
     { 
         path: '/categories/',
         label: 'Categorias',
         icon: Home,
-        ariaLabel: 'Ir para Categorias'
+        ariaLabel: 'Ir para Categorias',
+        isAdminOnly: true
     },
     { 
         path: '/dashboard/users', 
         label: 'Usuarios', 
         icon: User, 
-        ariaLabel: 'Ir para Pagina de Usuarios' 
+        ariaLabel: 'Ir para Pagina de Usuarios',
+        isAdminOnly: true,
     },
     { 
         path: '/dashboard/products', 
         label: 'Produtos', 
         icon: Package, 
-        ariaLabel: 'Ir para Pagina de Usuarios'
+        ariaLabel: 'Ir para Pagina de Usuarios',
+        isAdminOnly: false,
     },
 ];
 
 
 
 export const DashboardPage = () => {
+    const navigate = useNavigate();
     const [isShowMenu, setIsShowMenu] = useState(false);
 
     const isAdminUser = useAuthStore((state) => state.isAdminUser());
+    const logoutUser = useAuthStore((state) => state.logoutUser);
 
-    console.log('isAdminUser', isAdminUser);
 
     const handlerShowMenu = useCallback(() => {
         setIsShowMenu(() => true);
@@ -60,9 +64,11 @@ export const DashboardPage = () => {
         setIsShowMenu(() => false);
     }, []);
 
-    useEffect(() => {
-        getProductCategories();
-    }, [])
+    const handlerExitMenu = useCallback(() => {
+        logoutUser();
+        navigate('/login');
+    }, []);
+
 
     return (
         <div className={styles.dashboardContainer}>
@@ -83,7 +89,9 @@ export const DashboardPage = () => {
                 <div className={`${ styles.menuContainer } ${ !isShowMenu ? styles.hiddenMenu : '' }`}>
                     <SideMenuComponent 
                         menuItems={menuItems}
-                        onCloseMenu={handlerHiddenMenu} />
+                        isAdminUser={isAdminUser}
+                        onCloseMenu={handlerHiddenMenu}
+                        onExitMenu={handlerExitMenu} />
                 </div>
 
                 <div className={styles.mainContent}>

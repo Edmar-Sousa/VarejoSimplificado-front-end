@@ -14,6 +14,7 @@ interface MenuItem {
     label: string;
     icon: LucideIcon;
     ariaLabel: string;
+    isAdminOnly: boolean;
 }
 
 const MenuItemComponent = (props: MenuItem) => {
@@ -43,7 +44,10 @@ const MenuItemComponent = (props: MenuItem) => {
 
 interface SideMenuComponentProps {
     menuItems: Array<MenuItem>;
+    isAdminUser: boolean;
+    
     onCloseMenu: () => void,
+    onExitMenu: () => void,
 }
 
 
@@ -51,7 +55,9 @@ export const SideMenuComponent = (props: SideMenuComponentProps) => {
 
     const { 
         menuItems,
+        isAdminUser,
         onCloseMenu,
+        onExitMenu,
     } = props;
 
 
@@ -67,10 +73,20 @@ export const SideMenuComponent = (props: SideMenuComponentProps) => {
                     </button>
                 </li>
 
-                { menuItems.map((item, index) => <MenuItemComponent {...item} key={index} />) }
+                { menuItems.map((item, index) => {
+                    if (item.isAdminOnly && !isAdminUser)
+                        return null;
+
+                    return (
+                        <MenuItemComponent 
+                            key={index}
+                            {...item}
+                            ariaLabel={item.ariaLabel} />
+                    );
+                }) }
             </ul>
 
-            <button className={styles.exitButton}>
+            <button className={styles.exitButton} onClick={onExitMenu}>
                 <LogOut />
                 <p>Sair</p>
             </button>
