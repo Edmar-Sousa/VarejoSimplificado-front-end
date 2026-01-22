@@ -47,3 +47,8 @@ export async function getProductsAll(): Promise<Array<ProductType>> {
     const response = await api.get('/products');
     return response.data;
 }
+
+export async function deleteProductsById(id: number) {
+    const response = await api.delete(`/products/${id}`);
+    return response.data;
+}

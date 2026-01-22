@@ -1,13 +1,20 @@
+import Axios from "axios";
+
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "./styles.module.css";
+import { toast } from 'react-toastify';
+
 import { TableComponent } from "../../../../components/TableComponent";
-import { getProductsAll } from "../../../../services/products";
+import { deleteProductsById, getProductsAll, type ProductType } from "../../../../services/products";
+
+import styles from "./styles.module.css";
 
 
 const headers = [
   { column: 'id', label: 'ID produto' },
   { column: 'description', label: 'Descrição' },
+  { column: 'quantity', label: 'Quantidade' },
+  { column: 'bar_code', label: 'Codigo de barras' },
 ];
 
 export const ProductsPage = () => {
@@ -30,6 +37,20 @@ export const ProductsPage = () => {
     }
   }, []);
 
+  const handlerDeleteProduct = useCallback(async (product: ProductType) => {
+    try {
+      await deleteProductsById(product.id);
+      getProducts();
+      toast.success('Produto deletado com sucesso!');
+    } catch (error) {
+      let message = 'Não foi possível deletar o produto.';
+
+      if (Axios.isAxiosError(error))
+        message = error.response?.data.message;
+
+      toast.error(message);
+    }
+  }, []);
 
   useEffect(() => {
     getProducts();
@@ -44,7 +65,7 @@ export const ProductsPage = () => {
         header={headers}
         productsCategories={products}
         handlerClickEdit={() => {}}
-        handlerClickDelete={() => {}} />
+        handlerClickDelete={handlerDeleteProduct} />
     </div>
   );
 };
