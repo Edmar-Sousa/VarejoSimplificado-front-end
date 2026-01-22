@@ -9,7 +9,7 @@ import { UsersPage } from "./pages/dashboard/pages/users";
 import { ProductDetailsPage } from "./pages/dashboard/pages/products/details";
 import { ProductsCategoriesPage } from './pages/dashboard/pages/products/categories'
 import { AddProductCategoryPage } from "./pages/dashboard/pages/products/categories/add";
-import { AddProductPage } from "./pages/dashboard/pages/products/add";
+import { AddUserPage } from "./pages/dashboard/pages/users/add";
 
 
 import { useAuthStore } from './states/auth';
@@ -51,6 +51,7 @@ export const router = createBrowserRouter([
 
             { path: 'products/add', element: <AddProductPage /> },
             { path: 'products/:id', element: <ProductDetailsPage />  },
+            { path: 'users/add', element: <AddUserPage /> },
         ]
     }
 ]);
