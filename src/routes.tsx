@@ -14,6 +14,7 @@ import { AddUserPage } from "./pages/dashboard/pages/users/add";
 
 import { useAuthStore } from './states/auth';
 import { validateToken } from './utils/token'
+import { AddProductPage } from "./pages/dashboard/pages/products/add";
 
 const moddlewareAuth = () => {
     const { accessToken, logoutUser } = useAuthStore.getState();
